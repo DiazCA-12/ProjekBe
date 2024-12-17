@@ -50,20 +50,7 @@ const buatuser = async (req, res) => {
 };
 
 
-   
 
-    return res.status(201).json({
-      message: "Registration Berhasil",
-      user:userbaru,
-      token,
-    });
-  } catch (error) {
-    return res.status(400).json({
-      message: "Registration Gagal",
-      error: error.message,
-    });
-  }
-};
 
 const loginUser = async (req, res) => {
   try {
