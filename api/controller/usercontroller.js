@@ -34,6 +34,7 @@ const buatuser = async (req, res) => {
           nama,
           email,
           password,
+          passwordConfirm,
       });
 
       return res.status(200).json({
