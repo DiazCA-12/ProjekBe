@@ -22,7 +22,7 @@ const buatuser = async (req, res) => {
       });
     }
 
-    const cekEmail = await user.findOne({ where: { email: email } });
+    const cekEmail = await user.findOne({ where: {email: req.body.email} });
     if (cekEmail) {
       return res.status(400).json({
         errors: ["Email sudah terdaftar"],
@@ -35,7 +35,7 @@ const buatuser = async (req, res) => {
       password,
     });
 
-    const token = signToken(userbaru.id)
+    // const token = signToken(userbaru.id)
 
     return res.status(201).json({
       message: "Registration Berhasil",
