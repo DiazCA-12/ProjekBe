@@ -16,12 +16,12 @@ const buatuser = async (req, res) => {
           return res.status(400).json({ errors });
       }
 
-      const cekEmail = await user.findOne({ where: { email: req.body.email } });
-      if (cekEmail) {
-          return res.status(400).json({
-              message: 'Email sudah terdaftar, silakan gunakan email lain.',
-          });
-      }
+      // const cekEmail = await user.findOne({ where: { email: req.body.email } });
+      // if (cekEmail) {
+      //     return res.status(400).json({
+      //         message: 'Email sudah terdaftar, silakan gunakan email lain.',
+      //     });
+      // }
 
       const { nama, email, password, passwordConfirm } = req.body;
       if (password !== passwordConfirm) {
