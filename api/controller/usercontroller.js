@@ -35,7 +35,7 @@ const buatuser = async (req, res) => {
       password,
     });
 
-    // const token = signToken(userbaru.id)
+   
 
     return res.status(201).json({
       message: "Registration Berhasil",
