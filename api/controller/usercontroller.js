@@ -22,12 +22,12 @@ const buatuser = async (req, res) => {
       });
     }
 
-    const cekEmail = await user.findOne({ where: {email: req.body.email} });
-    if (cekEmail) {
-      return res.status(400).json({
-        errors: ["Email sudah terdaftar"],
-      });
-    }
+    // const cekEmail = await user.findOne({ where: {email: req.body.email} });
+    // if (cekEmail) {
+    //   return res.status(400).json({
+    //     errors: ["Email sudah terdaftar"],
+    //   });
+    // }
 
     const userbaru = await user.create({
       nama,
