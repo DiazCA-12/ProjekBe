@@ -11,29 +11,44 @@ const signToken = (id) => {
 
 const buatuser = async (req, res) => {
   try {
-    const { errors } = loginValidation.validateCreatePayload(req.body);
-    if (errors) {
-      return res.status(400).json({ errors });
-    }
-    const { nama, email, password, passwordConfirm, } = req.body;
-    if (password != passwordConfirm) {
-      return res.status(400).json({
-        message: "Password Tidak Sama",
+      const { errors } = loginValidation.validateCreatePayload(req.body);
+      if (errors) {
+          return res.status(400).json({ errors });
+      }
+
+      const cekEmail = await user.findOne({ where: { email: req.body.email } });
+      if (cekEmail) {
+          return res.status(400).json({
+              message: 'Email sudah terdaftar, silakan gunakan email lain.',
+          });
+      }
+
+      const { nama, email, password, passwordConfirm } = req.body;
+      if (password !== passwordConfirm) {
+          return res.status(400).json({
+              message: 'Password Tidak Sama',
+          });
+      }
+
+      await user.create({
+          nama,
+          email,
+          password,
       });
-    }
 
-    // const cekEmail = await user.findOne({ where: {email: req.body.email} });
-    // if (cekEmail) {
-    //   return res.status(400).json({
-    //     errors: ["Email sudah terdaftar"],
-    //   });
-    // }
+      return res.status(200).json({
+          success: true,
+          message: 'Daftar Pengguna Berhasil!',
+      });
+  } catch (error) {
+      return res.status(500).json({
+          success: false,
+          message: 'Terjadi kesalahan saat memproses data.',
+          error: error.message,
+      });
+  }
+};
 
-    const userbaru = await user.create({
-      nama,
-      email,
-      password,
-    });
 
    
 
