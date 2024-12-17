@@ -13,6 +13,11 @@ app.use(
     allowedHeaders: ["Authorization", "Content-Type"],
   })
 );
+
+app.get("/", (req, res) => {
+  res.send("Server is working!");
+});
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
 
