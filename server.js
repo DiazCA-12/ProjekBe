@@ -22,7 +22,7 @@ const options = {
       title: "Ecommerce API",
       version: "1.0.0",
     },
-    host: "be-smoky-eight.vercel.app", // Update with your Vercel URL
+    host: "projek-be.vercel.app", // Update with your Vercel URL
     basePath: "/",
   },
   basedir: __dirname, // The directory where Swagger will look for routes
